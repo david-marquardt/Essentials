@@ -4,10 +4,15 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <Authors>David Marquardt</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <OutputPath>C:\Users\david\source\repos\NuGet\</OutputPath>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="FileExtensions.cs" />
+  </ItemGroup>
 
 </Project>

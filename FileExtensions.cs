@@ -10,6 +10,7 @@ namespace Essentials
     {
         public static readonly string LocalFolder;
 
+
         static FileExtensions()
         {
             // Gets the target platform's valid save location
