@@ -4,7 +4,8 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <Authors>David Marquardt</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.1</Version>
+    <Version>1.1.1</Version>
+    <Description>Contains Filemanipulation classes</Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -13,6 +14,11 @@
 
   <ItemGroup>
     <Compile Include="FileExtensions.cs" />
+    <Compile Include="FileSize.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2244" />
   </ItemGroup>
 
 </Project>
