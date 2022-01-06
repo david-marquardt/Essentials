@@ -69,6 +69,42 @@ namespace Essentials
             return filePath;
         }
 
+
+        public static async Task<string> CopyFileToFolder(this string originFile, string dirName, string fileName)
+        {
+            // Use Combine so that the correct file path slashes are used
+            string dirPath = Path.Combine(LocalFolder, dirName);
+            string filePath = Path.Combine(dirPath, fileName);
+
+            if (!FilePathExists(dirName))
+            {
+                CreateDirectory(dirName);
+            }
+
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+
+            using (FileStream fileStream = File.OpenWrite(filePath))
+            {
+                Stream dataStream = File.OpenRead(originFile);
+
+                if (dataStream.CanSeek)
+                {
+                    dataStream.Position = 0;
+                    dataStream.Seek(0, SeekOrigin.Begin);
+                }
+
+                await dataStream.CopyToAsync(fileStream);
+
+                dataStream.Dispose();
+                dataStream.Close();
+                fileStream.Close();
+            }
+            return filePath;
+        }
+
         public static async Task<Stream> LoadFileStreamAsync(string fileName)
         {
             return await Task.Run(() =>
@@ -209,17 +245,54 @@ namespace Essentials
                 File.Delete(filePath);
             }
 
-            FileStream fileStream = File.OpenWrite(filePath);
-
-            if (dataStream.CanSeek)
+            using (FileStream fileStream = File.OpenWrite(filePath))
             {
-                dataStream.Position = 0;
+                if (dataStream.CanSeek)
+                {
+                    dataStream.Position = 0;
+                    dataStream.Seek(0, SeekOrigin.Begin);
+                }
+
+                await dataStream.CopyToAsync(fileStream);
+
+                dataStream.Dispose();
+                dataStream.Close();
+                fileStream.Close();
+            }
+            return filePath;
+        }
+
+
+        public static string SaveToFolder(this Stream dataStream, string dirName, string fileName)
+        {
+            // Use Combine so that the correct file path slashes are used
+            string dirPath = Path.Combine(LocalFolder, dirName);
+            string filePath = Path.Combine(dirPath, fileName);
+
+            if (!FilePathExists(dirName))
+            {
+                CreateDirectory(dirName);
             }
 
-            await dataStream.CopyToAsync(fileStream);
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
 
-            dataStream.Close();
-            fileStream.Close();
+            using (FileStream fileStream = File.OpenWrite(filePath))
+            {
+                if (dataStream.CanSeek)
+                {
+                    dataStream.Position = 0;
+                    dataStream.Seek(0, SeekOrigin.Begin);
+                }
+
+                dataStream.CopyTo(fileStream);
+
+                dataStream.Dispose();
+                dataStream.Close();
+                fileStream.Close();
+            }
             return filePath;
         }
 
