@@ -140,6 +140,21 @@ namespace Essentials
                 return null;
             }
         }
+        public static Stream GetFileStreamUnclosed(string fileName)
+        {
+            var filePath = Path.Combine(LocalFolder, fileName);
+
+            if (File.Exists(filePath))
+            {
+                var fileStream = File.OpenRead(filePath);
+                
+                return fileStream;
+            }
+            else
+            {
+                return null;
+            }
+        }
 
         public static string GetFileString(string fileName)
         {

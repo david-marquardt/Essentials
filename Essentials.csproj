@@ -4,8 +4,10 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <Authors>David Marquardt</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.1.6</Version>
+    <Version>1.1.7</Version>
     <Description>Contains Filemanipulation classes</Description>
+    <Copyright>David Marquardt</Copyright>
+    <PackageReleaseNotes>Getstream is in using statement, so the stream get closed after passing.</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
