@@ -4,8 +4,9 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <Authors>David Marquardt</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.1.7</Version>
-    <Description>Contains Filemanipulation classes</Description>
+    <Version>1.2.0</Version>
+    <Description>Contains Filemanipulation classes
+Entrychecker</Description>
     <Copyright>David Marquardt</Copyright>
     <PackageReleaseNotes>Getstream is in using statement, so the stream get closed after passing.</PackageReleaseNotes>
   </PropertyGroup>
@@ -15,6 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="EntryChecker.cs" />
     <Compile Include="FileExtensions.cs" />
     <Compile Include="FileSize.cs" />
   </ItemGroup>
